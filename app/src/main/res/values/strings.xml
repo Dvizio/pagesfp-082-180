@@ -1,0 +1,54 @@
+<resources>
+<<<<<<< Updated upstream
+    <string name="app_name">pagesfp</string>
+    <string name="login">LOGIN</string>
+=======
+    <string name="app_name">Attendance Registration</string>
+    <string name="history">HISTORY</string>
+    <string name="presensi">REGISTER</string>
+>>>>>>> Stashed changes
+    <string name="titlescan">Wink to Capure Photo</string>
+    <string name="titlesend">Send Photo?</string>
+    <string name="nrp">NRP</string>
+    <string name="edtnrp">Enter NRP</string>
+    <string name="pass">Password</string>
+<<<<<<< Updated upstream
+    <string name="edtpass">Masukkan Password</string>
+    <string name="code">Kode Mata Kuliah</string>
+    <string name="edtcode">Masukkan Kode Mata Kuliah</string>
+    <string name="name">Nama Mata Kuliah</string>
+    <string name="edtname">Masukkan Nama Mata Kuliah</string>
+    <string name="subject">Kelas</string>
+    <string name="edtsubject">Masukkan Kelas</string>
+    <string name="time">Waktu</string>
+    <string name="edttime">Masukkan Waktu</string>
+    <string name="take">AMBIL LAGI</string>
+    <string name="send">KIRIM</string>
+    <string name="add">TAMBAH KELAS</string>
+    <string name="titlelist">Daftar Kelas</string>
+    <string name="titleadd">Tambah Kelas</string>
+=======
+    <string name="edtpass">Enter Password</string>
+    <string name="code">Subject Code</string>
+    <string name="edtcode">Enter Subject Code</string>
+    <string name="name">Subject Name</string>
+    <string name="edtname">Enter Subject Name</string>
+    <string name="subject">Class</string>
+    <string name="edtsubject">Enter Class Name</string>
+    <string name="time">Time</string>
+    <string name="edttime">Enter Class Time</string>
+    <string name="take">RETAKE</string>
+    <string name="send">SEND</string>
+    <string name="next">NEXT</string>
+    <string name="exit">EXIT</string>
+    <string name="add">ADD SUBJECT</string>
+    <string name="titlelistsubject">CLASS LIST</string>
+    <string name="titlelistlog">History</string>
+    <string name="titleadd">ADD CLASS</string>
+    <!--    <string name="app_name">MyAbsen</string>-->
+    <string name="take_photo">Blink your eyes to capture photo</string>
+    <string name="permission_required">Permission Required</string>
+    <string name="permission_message">You must grant permission to access camera to run this application.</string>
+    <string name="permission_warning">All permissions are required.</string>
+>>>>>>> Stashed changes
+</resources>
