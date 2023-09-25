@@ -11,4 +11,6 @@
     <color name="dark">#073B4C</color>
     <color name="edttext">#858585</color>
     <color name="back">#C5283D</color>
+    <color name="blue">#CAF0F8</color>
+    <color name="purple">#E1E5F2</color>
 </resources>

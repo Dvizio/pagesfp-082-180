@@ -3,22 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_margin="10dp"
+    android:layout_marginVertical="6dp"
+    android:layout_marginHorizontal="2dp"
     android:paddingHorizontal="20dp"
     android:paddingVertical="15dp"
-    android:background="@drawable/subjectbg"
-    android:elevation="10dp">
-
-    <TextView
-        android:id="@+id/sname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:fontFamily="@font/poppins_bold"
-        android:textSize="17sp"
-        android:text="@string/name"
-        android:textColor="@color/black" />
+    android:background="@drawable/itembg"
+    android:elevation="6dp"
+    android:id="@+id/subjectLL">
 
     <TextView
         android:id="@+id/scode"
@@ -26,10 +17,26 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
         android:fontFamily="@font/poppins"
         android:textSize="15sp"
         android:text="@string/code"
+        android:background="@drawable/codebg"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/sname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/name"
+        android:textColor="@color/dark"
+        android:textSize="17sp" />
 
     <GridLayout
         android:layout_width="match_parent"
@@ -37,25 +44,30 @@
         <TextView
             android:id="@+id/sclass"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
+            android:layout_height="match_parent"
+            android:includeFontPadding="false"
+            android:gravity="center"
             android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:fontFamily="@font/poppins_semibold"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/poppins"
             android:textSize="15sp"
             android:text="@string/subject"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:drawableStart="@drawable/ic_baseline_meeting_room_24"/>
+
         <TextView
             android:id="@+id/stime"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
+            android:layout_height="match_parent"
+            android:includeFontPadding="false"
+            android:gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:fontFamily="@font/poppins"
             android:textSize="15sp"
             android:text="@string/time"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:drawableStart="@drawable/ic_baseline_date_range_24"/>
     </GridLayout>
 
 </LinearLayout>
