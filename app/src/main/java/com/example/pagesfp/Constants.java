@@ -45,4 +45,7 @@ public class Constants {
             "(6, 'Computer Graphics D', 'IF234504', 'IF103', 'Tuesday 10.00-11.50'), " +
             "(7, 'Machine Learning C', 'IF234401', 'IF102', 'Tuesday 13.00-14.50');";
 
+
+
 }
+

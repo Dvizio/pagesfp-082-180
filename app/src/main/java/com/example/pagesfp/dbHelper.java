@@ -3,6 +3,7 @@ package com.example.pagesfp;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
@@ -42,6 +43,29 @@ public class dbHelper extends SQLiteOpenHelper {
         db.execSQL("DELETE FROM " + Constants.TABLE_SUBJECT_NAME);
         db.execSQL(Constants.INSERT_SUBJECT_TABLE);
         db.close();
+    }
+
+    public long insertSubject(String name, String code, String className, String time) {
+        SQLiteDatabase db = getWritableDatabase();
+        long newRowId = -1; // Initialize newRowId to -1 (indicating failure).
+
+        try {
+            ContentValues values = new ContentValues();
+            values.put(Constants.S_NAME, name);
+            values.put(Constants.S_CODE, code);
+            values.put(Constants.S_CLASS, className);
+            values.put(Constants.S_TIME, time);
+
+            // Insert the data into the SUBJECT_TABLE.
+            newRowId = db.insertOrThrow(Constants.TABLE_SUBJECT_NAME, null, values);
+        } catch (SQLException e) {
+            // Handle the exception, e.g., log an error message or throw it.
+            e.printStackTrace();
+        } finally {
+            db.close(); // Close the database connection.
+        }
+
+        return newRowId; // Return the ID of the newly inserted row.
     }
 
     // get name subject fron id
