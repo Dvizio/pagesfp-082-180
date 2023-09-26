@@ -12,7 +12,7 @@ public class serverApi {
     //    public final static String BASE_URL = "http://etc.if.its.ac.id/";
 //    private final static String API_BASE_URL = BASE_URL+"api/v1/";
     //public final static String BASE_URL = "http://192.168.0.110/";
-    public final static String BASE_URL = "http://10.21.66.67/";
+    public final static String BASE_URL = "http://127.0.0.1:5000";
 
     public static Retrofit builder() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();

@@ -111,7 +111,7 @@ public class NamePass extends AppCompatActivity {
                     pDialog.dismiss();
                     new SweetAlertDialog(NamePass.this, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Error")
-                            .setContentText("Terjadi kesalahan, mohon ulangi lagi.")
+                            .setContentText("Muka tidak sesuai.")
                             .setConfirmText("OK")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
