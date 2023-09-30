@@ -28,7 +28,7 @@ def kirimFoto():
         img_file.write(image_binary)
 
     # Perform face verification (modify this part as needed)
-    if verify('PythonAPI/SampleIMG.jpg', 'received_image.jpg'):
+    if verify('PythonAPI\Maula1.jpg', 'received_image.jpg'):
         return "200 OK", 200
     else:
         return "201 Error", 201
