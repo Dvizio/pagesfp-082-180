@@ -10,7 +10,7 @@ import retrofit2.http.POST;
 public interface ApiClientAttendance {
     @FormUrlEncoded
     @Headers("Content-Type: application/json")
-    @POST("/kirimFoto.php/")
+    @POST("/sendImage")
     Call<ResponseApi> kirim(@Field("idUser") String id,
                             @Field("status") String status,
                             @Field("password") String pass,

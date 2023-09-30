@@ -4,7 +4,11 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-@app.route("/kirimFoto.php/", methods=["POST"])
+@app.route("/home", methods=["GET"])
+def homeRoute():
+    return "200 OK", 200 
+
+@app.route("/sendImage", methods=["POST"])
 def kirimFoto():
     # Get the data sent in the request body
     data = request.get_json()
@@ -30,7 +34,7 @@ def kirimFoto():
         return "201 Error", 201
 
 def verify(img1_path, img2_path):
-    result = DeepFace.verify(img1_path, img2_path)
+    result = DeepFace.verify(img1_path, img2_path, enforce_detection = False)
     if result['verified']:
         return True
     else:
