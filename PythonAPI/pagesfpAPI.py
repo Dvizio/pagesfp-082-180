@@ -13,6 +13,10 @@ def kirimFoto():
     # Get the data sent in the request body
     data = request.get_json()
 
+    # 
+    # return jsonify(response_data), 200
+
+
     # Extract the image data from the "image" key in the JSON data
     image_data_uri = data.get('image')
 
@@ -28,8 +32,9 @@ def kirimFoto():
         img_file.write(image_binary)
 
     # Perform face verification (modify this part as needed)
-    if verify('PythonAPI\Maula1.jpg', 'received_image.jpg'):
-        return "200 OK", 200
+    if verify('PythonAPI\SampleIMG.jpg', 'received_image.jpg'):
+        response_data = {"message": "202 Accepted"}
+        return jsonify(response_data), 200
     else:
         return "201 Error", 201
 

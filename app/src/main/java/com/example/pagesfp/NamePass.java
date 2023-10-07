@@ -1,7 +1,9 @@
 package com.example.pagesfp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -10,6 +12,8 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pagesfp.server.ApiClientAttendance;
@@ -79,7 +83,8 @@ public class NamePass extends AppCompatActivity {
         Bitmap result = Bitmap.createScaledBitmap(ScanFoto.bitmap, 96,96, true);
         String myBase64Image = encodeToBase64(result, Bitmap.CompressFormat.JPEG, 100);
         ApiClientAttendance api =  serverApi.builder().create(ApiClientAttendance.class);
-        Call<ResponseApi> upload = api.kirim(txt,st,ps,"data:image/jpeg;base64,"+myBase64Image);
+        ResponseApi responseApi = new ResponseApi(txt,st,ps,"data:image/jpeg;base64,"+myBase64Image);
+        Call<ResponseApi> upload = api.kirim(responseApi);
 
         upload.enqueue(new Callback<ResponseApi>() {
             @Override
@@ -89,13 +94,13 @@ public class NamePass extends AppCompatActivity {
                     pDialog.dismiss();
                     new SweetAlertDialog(NamePass.this, SweetAlertDialog.SUCCESS_TYPE)
                             .setTitleText("Hasil")
-                            .setContentText(response.body().getMsg())
+                            .setContentText(response.body().getNrp())
                             .setConfirmText("OK")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
                                 public void onClick(SweetAlertDialog sDialog) {
                                     sDialog.dismiss();
-                                    if (response.body().getMsg().toString().contains("Accepted")){
+                                    if (response.body().toString().contains("Accepted")){
                                         finish();
                                     }
 
@@ -111,7 +116,7 @@ public class NamePass extends AppCompatActivity {
                     pDialog.dismiss();
                     new SweetAlertDialog(NamePass.this, SweetAlertDialog.WARNING_TYPE)
                             .setTitleText("Error")
-                            .setContentText("Muka tidak sesuai.")
+                            .setContentText(response.toString())
                             .setConfirmText("OK")
                             .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
                                 @Override
@@ -126,18 +131,46 @@ public class NamePass extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseApi> call, Throwable t) {
                 pDialog.dismiss();
-                new SweetAlertDialog(NamePass.this, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Hasil")
-                        .setContentText("Internet Anda Bermasalah")
-                        .setConfirmText("OK")
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sDialog) {
-                                sDialog.dismissWithAnimation();
-                                //finish();
-                            }
-                        }).show();
+
+                // Create a custom dialog with a ScrollView
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(NamePass.this);
+                alertDialogBuilder.setTitle("Hasil");
+                alertDialogBuilder.setCancelable(false);
+
+                // Create a ScrollView and add it to the dialog
+                ScrollView scrollView = new ScrollView(NamePass.this);
+                alertDialogBuilder.setView(scrollView);
+
+                // Create a TextView to display the error message within the ScrollView
+                TextView errorMessageTextView = new TextView(NamePass.this);
+                errorMessageTextView.setText(t.getMessage());
+                scrollView.addView(errorMessageTextView);
+
+                alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                // Show the custom dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
             }
+//            public void onFailure(Call<ResponseApi> call, Throwable t) {
+//                pDialog.dismiss();
+//                new SweetAlertDialog(NamePass.this, SweetAlertDialog.ERROR_TYPE)
+//                        .setTitleText("Hasil")
+//                        .setContentText(t.getMessage())
+//                        .setConfirmText("OK")
+//                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                            @Override
+//                            public void onClick(SweetAlertDialog sDialog) {
+//                                sDialog.dismissWithAnimation();
+//                                //finish();
+//                            }
+//                        }).show();
+//            }
         });
     }
 
